@@ -1,18 +1,10 @@
-import { useQuery } from "@tanstack/react-query"
-import fetchUsers from "../../utils/fetch"
 import './card.css'
-
-
-export default function ShowData() {
-    const { data, error, isLoading } = useQuery({
-        queryKey: ["users"],
-        queryFn: fetchUsers
-    })
+function Card({ error, isLoading, data }) {
     return (
         <div>
-            {error ? <h2>{error.message}</h2> : ""}
+            {error ? <h2 className='error'>{error.message}</h2> : ""}
             {isLoading && <h2 className="pendingStatus">Loading...</h2>}
-            {data && data.map((user, index) => {
+            {data && data.map((user) => {
                 return <div className="card">
                     <h1>{user.username}</h1>
                     <p>{user.email}</p>
@@ -22,3 +14,4 @@ export default function ShowData() {
         </div>
     )
 }
+export default Card;

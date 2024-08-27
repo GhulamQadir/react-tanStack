@@ -1,5 +1,5 @@
 export default async function fetchUsers() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/uusers')
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
     if (!response.ok) {
         const error = new Error()
         error.code = response.status
